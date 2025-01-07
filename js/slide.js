@@ -1,5 +1,6 @@
 import debounce from './debounce.js';
 
+// SLIDE CLASS
 export class Slide {
    constructor(slide, wrapper) {
       this.slide = document.querySelector(slide);
@@ -23,7 +24,7 @@ export class Slide {
       return this.dist.finalPosition - this.dist.movement;
    }
 
-   //Slide Events
+   // SLIDE EVENTS
    onStart(event) {
       let movetype;
       if (event.type === 'mousedown') {
@@ -69,7 +70,7 @@ export class Slide {
       this.wrapper.addEventListener('touchend', this.onEnd);
    }
 
-   //Slides config
+   // SLIDES CONFIG
    slidePosition(slide) {
       const margin = (this.wrapper.offsetWidth - slide.offsetWidth) / 2;
       return -(slide.offsetLeft - margin);
@@ -108,7 +109,7 @@ export class Slide {
       this.slideArray[this.index.active].element.classList.add(this.activeClass);
    }
 
-   //Next and Prev Slides
+   // NEXT AND PREV SLIDES
    activePrevSlide() {
       if (this.index.prev !== undefined) this.changeSlide(this.index.prev);
    }
@@ -150,7 +151,8 @@ export class Slide {
    }
 }
 
-export class SlideNav extends Slide {
+// SLIDENAV CLASS
+export default class SlideNav extends Slide {
    constructor(slide, wrapper) {
       super(slide, wrapper);
       this.bindControlEvents();
